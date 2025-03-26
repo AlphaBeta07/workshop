@@ -1,0 +1,96 @@
+<!-- 1. Prime Number Checker 
+ Concepts: Loops (for), Conditional statements, Modulus operator 
+ Description: This program checks whether a given number is a prime number or not. A 
+prime number is a number that has only two factors: 1 and itself. The program uses a for 
+loop to check divisibility (using the modulus operator %) for all numbers up to the square 
+root of the given number. If no divisor is found, the number is prime.  -->
+<!DOCTYPE html>
+<head>
+    <title>Prime number checker</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        button:hover {
+            background-color: #3367D6;
+        }
+        .entry {
+            display:contents;
+            margin-top: 20px;
+        }
+        .entry input {
+            padding: 10px;
+            width:40%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prime number checker</h1>
+        <div class="entry">
+            <label for="number">Enter a number:</label>
+            <input type="text" id="number" placeholder="Enter number" >
+        </div>
+        <button class="button" onclick="isPrime()" >Check</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function isPrime() {
+            let num = document.getElementById('number').value;
+            num = parseInt(num);
+            let resultText = '';
+            
+            if (isNaN(num) || num <= 1) {
+                resultText = 'enter a number greater than 1';
+            } else {
+                let isPrimeFlag = true;
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        isPrimeFlag = false;
+                        break;
+                    }
+                }
+                resultText = isPrimeFlag ? `${num} is a prime number` : `${num} is not a prime number`;
+            }
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+</body>
+</html>

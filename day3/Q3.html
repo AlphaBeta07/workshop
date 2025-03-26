@@ -1,0 +1,98 @@
+<!-- 3. Array Sum 
+ Concepts: Arrays, Loops (for/while), Array methods (reduce) 
+ Description: This program calculates the sum of all the elements in an array. It can be 
+done using a loop (e.g., for or while) to iterate through the array and add each element..  -->
+<!DOCTYPE html>
+<head>
+  <title>Array sum calculator</title>
+  <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+    }
+    .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #444;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4285F4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    button:hover {
+        background-color: #3367D6;
+    }
+    .entry {
+        display:contents;
+        margin-top: 20px;
+    }
+    .entry input {
+        padding: 10px;
+        width:40%;
+        height: auto;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    } 
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Array Sum Calculator</h1>
+    <div class="entry">
+      <p>Enter an array separated by "," </p>
+      <input type="text" id="arrayInput" placeholder="Enter numbers here">
+    </div>
+      <button class="button" onclick="calculateSum()">Calculate Sum</button>
+    <h2>Result:</h2>
+    <p id="result"></p>
+  </div>
+  <script>
+    function arraySumWithLoop(arr) {
+      let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+      }
+      return sum;
+    }
+    function arraySumWithReduce(arr) {
+      return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    }
+    function calculateSum() {
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(' ').map(num => parseFloat(num.trim()));
+
+      if (array.some(isNaN)) {
+        document.getElementById('result').textContent = "Please enter valid numbers separated by commas.";
+        return;
+      }
+      const sumWithLoop = arraySumWithLoop(array);
+      const sumWithReduce = arraySumWithReduce(array);
+      document.getElementById('result').textContent = `Sum (using loop): ${sumWithLoop} \n Sum (using reduce): ${sumWithReduce}`;
+    }
+  </script>
+</body>
+</html>

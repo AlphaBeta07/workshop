@@ -1,0 +1,119 @@
+<!-- 5. Simple To-Do List 
+ Concepts: Arrays, Array methods (push), User interaction 
+ Description: This program simulates a basic to-do list. It allows users to add tasks by 
+pushing them into an array. The list can be displayed or modified as needed. The program 
+can be expanded to include other features like removing tasks or marking them as 
+completed.  -->
+
+<!DOCTYPE html>
+<head>
+  <title>Simple To-Do list</title>
+  <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+    }
+    .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #444;
+    }
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #444;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4285F4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    button:hover {
+        background-color: #3367D6;
+    }
+    .entry {
+        display:contents;
+        margin-top: 20px;
+    }
+    .entry input {
+        padding: 10px;
+        width:40%;
+        height: auto;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    } 
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Simple To-Do list</h1>
+    <div class="entry">
+      <p>Enter a task below & add it to your list:</p>
+      <input type="text" id="taskInput" placeholder="Enter a new task">
+    </div>
+    <button onclick="addTask()">Add Task</button>
+    <h2>Task List:</h2>
+    <ul id="taskList">  </ul>
+  </div>
+  <script> 
+    let tasks = []; 
+    function addTask() {
+      const taskInput = document.getElementById('taskInput').value;  
+      if (taskInput.trim() !== '') {
+        tasks.push(taskInput);  
+        displayTasks();  
+      } else {
+        alert('Please enter a task!');
+      }
+      document.getElementById('taskInput').value = ''; 
+    }
+
+    function displayTasks() {
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+
+
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = task;
+        const removeButton = document.createElement('button');
+        
+        removeButton.textContent = 'Remove';
+        removeButton.onclick = function() {
+          removeTask(index); 
+        };
+        
+        li.appendChild(removeButton);
+        taskList.appendChild(li); 
+      });
+    }
+    function removeTask(index) {
+      tasks.splice(index, 1); 
+      displayTasks(); 
+    }
+  </script>
+</body>
+</html>
