@@ -1,0 +1,42 @@
+<!-- 3. Array Sum 
+ Concepts: Arrays, Loops (for/while), Array methods (reduce) 
+ Description: This program calculates the sum of all the elements in an array. It can be 
+done using a loop (e.g., for or while) to iterate through the array and add each element..  -->
+<!DOCTYPE html>
+<head>
+  <title>Array sum calculator</title>
+</head>
+<body>
+  <h1>Array Sum Calculator</h1>
+  <p>Enter an array separated by "," (e.g., 1, 2, 3, 4, 5):</p>
+  <input type="text" id="arrayInput" placeholder="Enter numbers here">
+  <button onclick="calculateSum()">Calculate Sum</button>
+
+  <h2>Result:</h2>
+  <pre id="result"></pre>
+  <script>
+    function arraySumWithLoop(arr) {
+      let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+      }
+      return sum;
+    }
+    function arraySumWithReduce(arr) {
+      return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    }
+    function calculateSum() {
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(',').map(num => parseFloat(num.trim()));
+
+      if (array.some(isNaN)) {
+        document.getElementById('result').textContent = "Please enter valid numbers separated by commas.";
+        return;
+      }
+      const sumWithLoop = arraySumWithLoop(array);
+      const sumWithReduce = arraySumWithReduce(array);
+      document.getElementById('result').textContent = `Sum (using loop): ${sumWithLoop} \nSum (using reduce): ${sumWithReduce}`;
+    }
+  </script>
+</body>
+</html>

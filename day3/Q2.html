@@ -1,0 +1,29 @@
+<!-- 2. Temperature Converter (Celsius to Fahrenheit) 
+ Concepts: Arithmetic operations, Variables 
+ Description: This program converts temperatures from Celsius to Fahrenheit. It asks the 
+user to input a temperature in Celsius and then applies the formula to convert it to 
+Fahrenheit: The result is then displayed. -->
+<!DOCTYPE html>
+<head>
+    <title>Temperature Converter</title>    
+</head>
+<body>
+    <h1>Temperature converter (°C to °F)</h1>
+    <label for="celsius">Enter temperature in Celsius:</label>
+    <input type="text" id="celsius" placeholder="Enter temperature (°C)" />
+    <button onclick="convertTemperature()">Convert</button>
+    <p id="result"></p>
+    <script>
+        function convertTemperature() {
+            let celsius = document.getElementById('celsius').value;
+            celsius = parseFloat(celsius);
+            if (isNaN(celsius)) {
+                document.getElementById('result').innerText = 'Please enter a valid number for Celsius.';
+            } else {
+                let fahrenheit = (celsius * 9/5) + 32;
+                document.getElementById('result').innerText = `${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F.`;
+            }
+        }
+    </script>
+</body>
+</html>

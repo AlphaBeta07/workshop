@@ -1,0 +1,31 @@
+<!-- 4. Count Vowels in a String 
+ Concepts: String manipulation, Loops (for), Conditional statements 
+ Description: This program counts the number of vowels (A, E, I, O, U) in a given string. 
+The program loops through each character of the string, checks if it's a vowel using 
+conditional statements, and increments a counter accordingly. -->
+<!DOCTYPE html>
+<head>
+  <title>Count the Vowels in a String</title>
+</head>
+<body>
+  <h1>Count the vowels in a String</h1>
+  <p>Enter a string </p>
+  <input type="text" id="inputString" placeholder="Enter a string here">
+  <button onclick="countVowels()">Count</button>
+
+  <h2>Result:</h2>
+  <p id="result"></p>
+  <script>
+    function countVowels() {
+      const inputString = document.getElementById('inputString').value;
+      let vowelCount = 0;
+      for (let i = 0; i < inputString.length; i++) {
+        if ('aeiouAEIOU'.indexOf(inputString[i]) !== -1) {
+          vowelCount++;
+        }
+      }
+      document.getElementById('result').textContent = `Number of vowels: ${vowelCount}`;
+    }
+  </script>
+</body>
+</html>
